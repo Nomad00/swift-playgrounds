@@ -33,6 +33,19 @@ extension UITextField {
         holdingView.addSubview(imageView)
         self.leftView = holdingView
     }
+
+    /**
+    Method to setup the rightView property of the UITextField to accomodate a passed in UIButton.
+    @param button : The button to display in the rightView.
+    */
+    func configureRightView(#button : UIButton!)
+    {
+        // Configure the rightView behavior.
+        self.rightViewMode = .Always
+
+        // Add the button.
+        self.rightView = button
+    }
 }
 
 let testTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
@@ -44,4 +57,9 @@ testTextField.createAttributedPlaceholderFromPlaceholder()
 let ourImage = UIImage(named: "ic_user_grey")
 
 testTextField.configureLeftView(image: ourImage)
+
+let ourButton = UIButton.buttonWithType(UIButtonType.InfoDark) as UIButton
+ourButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+
+testTextField.configureRightView(button: ourButton)
 
